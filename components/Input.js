@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
 import { auth, db } from "../firebase";
-const Input = () => {
+const Input = ({ endOfMessage }) => {
   const router = useRouter();
   const [user] = useAuthState(auth);
   const [msgInput, setMsgInput] = useState("");
@@ -31,6 +31,7 @@ const Input = () => {
       photoURL: user.photoURL,
       message: msgInput,
     });
+    endOfMessage();
     setMsgInput("");
   };
   return (

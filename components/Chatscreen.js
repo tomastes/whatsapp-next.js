@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useRef } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import styled from "styled-components";
 import { db } from "../firebase";
@@ -7,6 +8,7 @@ import Input from "./Input";
 import Messages from "./Messages";
 
 const Chatscreen = ({ chat, messages }) => {
+  const endOfMessageRef = useRef(null);
   const router = useRouter();
   // console.log(JSON.parse(messages));
   const [messagesSnapshot, loading, error] = useCollection(
@@ -40,6 +42,12 @@ const Chatscreen = ({ chat, messages }) => {
       ));
     }
   };
+  const endOfMessage = () => {
+    endOfMessageRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
   return (
     <Container>
       {/* header */}
@@ -47,10 +55,13 @@ const Chatscreen = ({ chat, messages }) => {
         <Header chat={chat} />
       </ChatHeader>
       {/* messages */}
-      <ChatMsgsContainer>{renderMessages()}</ChatMsgsContainer>
+      <ChatMsgsContainer>
+        {renderMessages()}
+        <div style={{ marginBottom: "90px" }} ref={endOfMessageRef} />
+      </ChatMsgsContainer>
       {/* input */}
       <InputContainer>
-        <Input />
+        <Input endOfMessage={endOfMessage} />
       </InputContainer>
     </Container>
   );
@@ -67,9 +78,13 @@ const Container = styled.div`
 `;
 const ChatHeader = styled.div`
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 `;
 const ChatMsgsContainer = styled.div`
   flex: 1;
   background-image: url("https://i.pinimg.com/originals/97/c0/07/97c00759d90d786d9b6096d274ad3e07.png");
+  overflow-y: scroll;
 `;
 const InputContainer = styled.div``;
