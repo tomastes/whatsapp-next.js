@@ -16,7 +16,6 @@ const Header = ({ chat }) => {
       .where("email", "==", getChatRecipent(chat.users, user))
   );
   const reciepient = reciepentSnapshot?.docs?.[0]?.data();
-  console.log(reciepient?.lastSeen?.toDate());
   return (
     <Container>
       <HeaderLeft>

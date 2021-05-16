@@ -23,6 +23,7 @@ const Chat = ({ chat, messages }) => {
 export default Chat;
 
 export async function getServerSideProps(context) {
+  console.log(process.env);
   const ref = db.collection("chats").doc(context.params.id);
   //prepare the messages on server
   const messagesRes = await ref
@@ -45,8 +46,6 @@ export async function getServerSideProps(context) {
     id: chatRes.id,
     ...chatRes.data(),
   };
-  console.log(chat);
-  console.log(messages);
 
   return { props: { chat, messages: JSON.stringify(messages) } };
 }
