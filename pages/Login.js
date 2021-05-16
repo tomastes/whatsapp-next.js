@@ -7,6 +7,7 @@ const Login = () => {
   const signIn = () => {
     auth.signInWithPopup(provider).catch((e) => alert(e.message));
   };
+  console.log(process.env.NEXT_FIREBASE_APP_ID);
   return (
     <Container>
       <Head>

@@ -7,6 +7,7 @@ import firebase from "firebase";
 import { useEffect } from "react";
 function MyApp({ Component, pageProps }) {
   const [user, loading] = useAuthState(auth);
+  console.log(process.env.NEXT_FIREBASE_APP_ID);
 
   useEffect(() => {
     if (user) {

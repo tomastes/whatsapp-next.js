@@ -1,12 +1,13 @@
 import firebase from "firebase";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyARH6PAfcxzC3oDwyy5K7kMQ5CJ3KHjEfw",
-  authDomain: "whatsapp-2-fe29b.firebaseapp.com",
-  projectId: "whatsapp-2-fe29b",
-  storageBucket: "whatsapp-2-fe29b.appspot.com",
-  messagingSenderId: "772931611501",
-  appId: "1:772931611501:web:f0e91e73fd8ae2595ec864",
+  apiKey: process.env.NEXT_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_FIREBASE_AUTH_DOMAIN,
+  // databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.NEXT_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_FIREBASE_APP_ID,
 };
 
 const app = !firebase.apps.length

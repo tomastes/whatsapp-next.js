@@ -4,6 +4,8 @@ import Sidebar from "../components/Sidebar";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  console.log(process.env.NEXT_FIREBASE_APP_ID);
+
   return (
     <div>
       <Head>
