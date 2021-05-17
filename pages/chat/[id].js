@@ -23,7 +23,6 @@ const Chat = ({ chat, messages }) => {
 export default Chat;
 
 export async function getServerSideProps(context) {
-  console.log(process.env);
   const ref = db.collection("chats").doc(context.params.id);
   //prepare the messages on server
   const messagesRes = await ref

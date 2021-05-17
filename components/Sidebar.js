@@ -73,6 +73,8 @@ const Sidebar = () => {
 const Container = styled.div`
   border-right: 1px solid gray;
   background-color: #122;
+  max-width: 15rem;
+  height: 100vh;
 `;
 const Header = styled.div`
   display: flex;
@@ -110,9 +112,9 @@ const SearchInput = styled.input`
   background: none;
 `;
 const SidebarButton = styled(Button)`
-  width: 100%;
-  background-color: #33393c;
-  color: whitesmoke;
-  margin: 5px 0;
+  width: 100% !important;
+  background-color: #33393c !important;
+  color: whitesmoke !important;
+  margin: 5px 0 !important;
 `;
 export default Sidebar;
